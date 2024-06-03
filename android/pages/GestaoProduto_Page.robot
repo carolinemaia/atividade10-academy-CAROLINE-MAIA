@@ -3,7 +3,7 @@
 Resource    ../../base.robot
 Resource    ../utils/config.robot
 Resource    ../utils//commons.robot
-Library    XML
+
 
 *** Variables ***
 ${DESCRICAO}            xpath=//android.widget.TextView[@text="Descrição"]
@@ -12,7 +12,6 @@ ${UNIDADE}              xpath=//android.widget.TextView[@text="Unidade"]
 ${UNIDADE_CAMPO}        xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_unidade"]
 ${QUANTIDADE}           xpath=//android.widget.TextView[@text="Quantidade"]
 ${QUANTIDADE_CAMPO}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
-${quantidade_valor}     100
 ${VALOR_UNIT}           xpath=//android.widget.TextView[@text="Val.Unit."]
 ${VALOR_UNIT_CAMPO}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_valunit"]
 ${LOTE}                 xpath=//android.widget.TextView[@text="Lote"]
@@ -29,10 +28,10 @@ ${ESTOQUE_ENTRADA}      xpath=//android.widget.Button[@resource-id="br.com.pztec
 ${ESTOQUE_ADICIONA}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdentrada"]
 ${ESTOQUE_SAIDA}        xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/saida"]
 ${ESTOQUE_DECREMENTA}    xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdsaida"]
-
 ${valor}                80
 ${PRODUTO_QUANTIDADE}   xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
 ${QUANTIDADE_SALVAR}    xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_salvar"]
+${EDITAR}               xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/editar"]
     
 *** Keywords ***
 Dado que o usuário acessa tela de cadastro de produto
@@ -42,7 +41,7 @@ Quando preencher os campos obrigatórios do novo produto
     Espera elemento e clica    ${DESCRICAO_CAMPO}
     Input Text    ${DESCRICAO_CAMPO}    PRODUTO AAC
     Espera elemento e clica    ${QUANTIDADE_CAMPO}
-    Input Text    ${QUANTIDADE_CAMPO}    ${quantidade_valor}
+    Input Text    ${QUANTIDADE_CAMPO}    100
     Espera elemento e clica    ${VALOR_UNIT_CAMPO}
     Input Text    ${VALOR_UNIT_CAMPO}    10
 
@@ -110,6 +109,40 @@ Então é possivel visualizar uma diminuição de quantidade do produto na pagin
     Should Be Equal As Strings    ${quantidade}    20.0
 
 E acessa funcionalidade de edição de produto
+    Espera elemento e clica    ${EDITAR}
+
+Então é possivel editar dados do produto
+    Wait Until Element Is Visible    ${PRODUTO}
+
+    Clear Text    ${DESCRICAO_CAMPO}
+    Espera elemento e clica    ${DESCRICAO_CAMPO}
+    Input Text    ${DESCRICAO_CAMPO}    PRODUTO BBC
+    
+    Clear Text    ${QUANTIDADE_CAMPO}
+    Espera elemento e clica    ${QUANTIDADE_CAMPO}
+    Input Text    ${QUANTIDADE_CAMPO}   50
+    
+    Clear Text    ${VALOR_UNIT_CAMPO}
+    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
+    Input Text    ${VALOR_UNIT_CAMPO}   50
+
+E é possível consultar as informações atualizadas na tela inicial
+    Wait Until Element Is Visible    ${DESCRICAO_CAMPO}
+    ${descricao_atualizada}=    Get Text    ${DESCRICAO_CAMPO}
+    Should Be Equal As Strings    ${descricao_atualizada}    PRODUTO BBC
+
+    Wait Until Element Is Visible    ${QUANTIDADE_CAMPO}
+    ${quantidade_atualizada}=    Get Text    ${QUANTIDADE_CAMPO}
+    Should Be Equal As Strings    ${quantidade_atualizada}    50
+    
+    Wait Until Element Is Visible    ${VALOR_UNIT_CAMPO}
+    ${valor_atualizado}=    Get Text    ${VALOR_UNIT_CAMPO}
+    Should Be Equal As Strings    ${valor_atualizado}    50
+
+
+
+
+
     
 
 

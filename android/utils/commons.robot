@@ -28,7 +28,7 @@ Produto cadastrado
     Espera elemento e clica    ${DESCRICAO_CAMPO}
     Input Text    ${DESCRICAO_CAMPO}    PRODUTO AAC
     Espera elemento e clica    ${QUANTIDADE_CAMPO}
-    Input Text    ${QUANTIDADE_CAMPO}    ${QUANTIDADE_VALOR}
+    Input Text    ${QUANTIDADE_CAMPO}    100
     Espera elemento e clica    ${VALOR_UNIT_CAMPO}
     Input Text    ${VALOR_UNIT_CAMPO}    10
     Click Element    ${PRODUTO_SALVAR}
