@@ -1,6 +1,7 @@
 *** Settings ***
 
 Library    AppiumLibrary
+Library    XML
 
 #Utils
 Resource    android/utils/config.robot

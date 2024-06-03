@@ -22,3 +22,13 @@ Clica e Input Texto
 Espera para visualizar o elemento
     [Arguments]    ${elemento}
     Wait Until Keyword Succeeds    4    1    Element Should Be Visible    ${elemento}
+
+Produto cadastrado
+    Espera elemento e clica    ${PRODUTO_NOVO}
+    Espera elemento e clica    ${DESCRICAO_CAMPO}
+    Input Text    ${DESCRICAO_CAMPO}    PRODUTO AAC
+    Espera elemento e clica    ${QUANTIDADE_CAMPO}
+    Input Text    ${QUANTIDADE_CAMPO}    ${QUANTIDADE_VALOR}
+    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
+    Input Text    ${VALOR_UNIT_CAMPO}    10
+    Click Element    ${PRODUTO_SALVAR}
