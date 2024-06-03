@@ -16,10 +16,11 @@ ${VALOR_UNIT}           xpath=//android.widget.TextView[@text="Val.Unit."]
 ${VALOR_UNIT_CAMPO}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_valunit"]
 ${LOTE}                 xpath=//android.widget.TextView[@text="Lote"]
 ${LOTE_CAMPO}           xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_lote"]
-${VALIDADE_DATA}        xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data"]
+${DATA}                 xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data"]
+${VALIDADE_DATA}        xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_validade"]
 ${DATA_INSERIR}         xpath=//android.view.View[@content-desc="28 junho 2024"]
 ${DATA_CANCELAR}        xpath=//android.widget.Button[@resource-id="android:id/button2"]
-${DATA_OK}              xpath=//android.widget.Button[@resource-id="android:id/button1"]
+${BUTTON_OK}              xpath=//android.widget.Button[@resource-id="android:id/button1"]
 ${PRODUTO_SALVAR}       xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_gravar_assunto"]
 ${PRODUTO_ID}           xpath=(//android.widget.TextView[@text="ID"])[1]
 ${PRODUTO_NOME}         xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
@@ -32,6 +33,10 @@ ${valor}                80
 ${PRODUTO_QUANTIDADE}   xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
 ${QUANTIDADE_SALVAR}    xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_salvar"]
 ${EDITAR}               xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/editar"]
+${ESTOQUE_INSUFICIENTE}    xpath=//android.widget.TextView[@resource-id="android:id/message"]
+${VALOR_ATUAL}           xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_qtdatual"]
+${numero_inserido}    2000
+
     
 *** Keywords ***
 Dado que o usuário acessa tela de cadastro de produto
@@ -51,10 +56,7 @@ E o produto pode ser consultado na listagem de produtos na tela inicial
     Espera elemento está visivel    ${PRODUTO_NOME}
 
 E alterar a validade do produto
-    Hide Keyboard
-    Espera elemento e clica    ${VALIDADE_DATA}
-    Espera elemento e clica    ${DATA_INSERIR}
-    Click Element    ${DATA_OK}
+    Altera a validade
 
 Quando não preencher nenhum campo
     ${descricao_vazia}=  Get WebElement  ${DESCRICAO_CAMPO}
@@ -99,14 +101,12 @@ E acessa funcionalidade de saida de produtos
     Espera elemento e clica    ${ESTOQUE_SAIDA}
 
 Quando diminui quantidade de produto no estoque
-    Espera elemento e clica    ${ESTOQUE_DECREMENTA}
-    Press Keycode    15
-    Press Keycode    7
+    Decrementa estoque    80
 
 Então é possivel visualizar uma diminuição de quantidade do produto na pagina inicial
-    Wait Until Element Is Visible    ${PRODUTO_QUANTIDADE}
-    ${quantidade}=    Get Text    ${PRODUTO_QUANTIDADE}
-    Should Be Equal As Strings    ${quantidade}    20.0
+    Wait Until Element Is Visible     ${PRODUTO_QUANTIDADE}
+    ${quantidade}=    Get Text        ${PRODUTO_QUANTIDADE}
+    Should Be Equal As Strings        ${quantidade}    20.0
 
 E acessa funcionalidade de edição de produto
     Espera elemento e clica    ${EDITAR}
@@ -138,6 +138,35 @@ E é possível consultar as informações atualizadas na tela inicial
     Wait Until Element Is Visible    ${VALOR_UNIT_CAMPO}
     ${valor_atualizado}=    Get Text    ${VALOR_UNIT_CAMPO}
     Should Be Equal As Strings    ${valor_atualizado}    50
+
+Então é possível editar data de validade do produto ja cadastrado
+    Hide Keyboard
+    Altera a validade
+    Click Element    ${PRODUTO_SALVAR}
+
+E é possível consultar a data atualizada na tela inicial
+    Wait Until Element Is Visible    ${VALIDADE_DATA}
+    ${descricao_atualizada}=    Get Text    ${VALIDADE_DATA}
+    Should Be Equal As Strings    ${descricao_atualizada}    28/06/2024
+
+Quando diminui quantidade de produto no estoque com numero maior que a quantidade atual
+    Decrementa estoque    ${numero_inserido}    
+    
+Então uma mensagem com alerta que estoque está insuficiente deverá ser exibida não permitindo finalizar operação
+    Wait Until Element Is Visible    ${VALOR_ATUAL}
+    ${valor}=  Get Text  ${VALOR_ATUAL}
+    ${valor}=  Convert To Integer  ${valor}
+    Click Element    ${QUANTIDADE_SALVAR}
+    Run Keyword If    ${numero_inserido} > ${valor}    Espera elemento está visivel    ${ESTOQUE_INSUFICIENTE}
+    
+
+E ao clicar em ok retorna para formulário
+    Espera elemento e clica    ${BUTTON_OK}
+    
+    
+    
+    
+    
 
 
 

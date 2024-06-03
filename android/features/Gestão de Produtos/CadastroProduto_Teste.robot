@@ -13,7 +13,7 @@ CT001 - Deve ser possivel cadastrar produtos com sucesso
     Então o produto será cadastrado com sucesso
     E o produto pode ser consultado na listagem de produtos na tela inicial
 
-CT002 - Ao cadastrar o produto deve ser possível alterar a Validade
+CT002 - Ao cadastrar o produto deve ser possível selecionar uma data de Validade
     Dado que o usuário acessa tela de cadastro de produto
     Quando preencher os campos obrigatórios do novo produto
     E alterar a validade do produto

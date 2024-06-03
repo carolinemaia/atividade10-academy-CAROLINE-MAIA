@@ -32,3 +32,14 @@ Produto cadastrado
     Espera elemento e clica    ${VALOR_UNIT_CAMPO}
     Input Text    ${VALOR_UNIT_CAMPO}    10
     Click Element    ${PRODUTO_SALVAR}
+
+Altera a validade
+    Hide Keyboard
+    Espera elemento e clica    ${DATA}
+    Espera elemento e clica    ${DATA_INSERIR}
+    Click Element    ${BUTTON_OK}
+
+Decrementa estoque
+    [Arguments]    ${element}
+    Espera elemento e clica    ${ESTOQUE_DECREMENTA}
+    Input Text    ${ESTOQUE_DECREMENTA}    ${element}
