@@ -2,7 +2,7 @@
 
 Resource    ../../base.robot
 Resource    ../utils/config.robot
-Resource    ../utils//commons.robot
+Resource    ../utils/commons.robot
 
 
 *** Variables ***
@@ -51,6 +51,8 @@ Então o produto será cadastrado com sucesso
     Espera elemento e clica    ${PRODUTO_SALVAR}
 E o produto pode ser consultado na listagem de produtos na tela inicial
     Espera elemento está visivel    ${PRODUTO_NOME}
+    Element Should Contain Text    ${CODIGO_CAMPO}    01
+    Element Should Contain Text    ${DESCRICAO_CAMPO}    Pasta de Amendoin
 
 E alterar a validade do produto
     Altera a validade

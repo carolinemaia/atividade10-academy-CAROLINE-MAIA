@@ -24,17 +24,10 @@ Espera para visualizar o elemento
     Wait Until Keyword Succeeds    4    1    Element Should Be Visible    ${elemento}
 
 Cadastrar mais de um produto
-    [Arguments]    ${desc_produto1}    ${qtd_produto}    ${val_unit}
+    [Arguments]    ${cod}    ${des}    ${uni}    ${qtd}    ${val}    ${lot}
     Espera elemento e clica    ${PRODUTO_NOVO}
-    Espera elemento e clica    ${DESCRICAO_CAMPO}
-    Input Text    ${DESCRICAO_CAMPO}    ${desc_produto1}
-    Espera elemento e clica    ${QUANTIDADE_CAMPO}
-    Input Text    ${QUANTIDADE_CAMPO}    ${qtd_produto}
-    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
-    Input Text    ${VALOR_UNIT_CAMPO}    ${val_unit}
+    Novo produto com todos os campos    ${cod}    ${des}    ${uni}    ${qtd}    ${val}    ${lot}
     Click Element    ${PRODUTO_SALVAR}
-
-[Arguments]    ${desc_produto1}    ${qtd_produto}    ${val_unit}
 
 Altera a validade
     Hide Keyboard
@@ -83,15 +76,7 @@ Produto somente com campos obrigatorios
 Produto ja cadastrado
     Espera elemento e clica    ${PRODUTO_NOVO}
     [Arguments]    ${des}    ${qtd}    ${val}
-    Espera elemento e clica    ${DESCRICAO_CAMPO}
-    Input Text    ${DESCRICAO_CAMPO}    ${des}
-    
-    Espera elemento e clica    ${QUANTIDADE_CAMPO}
-    Input Text    ${QUANTIDADE_CAMPO}    ${qtd}
-
-    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
-    Input Text    ${VALOR_UNIT_CAMPO}    ${val}
-    Click Element    ${PRODUTO_SALVAR}
+    Produto somente com campos obrigatorios    ${des}    ${qtd}    ${val}
 
 
 

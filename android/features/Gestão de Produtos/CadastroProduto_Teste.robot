@@ -30,12 +30,9 @@ CT003 - Não deve ser possivel cadastrar novo produto sem informar os dados obri
 CT004 - Cadastrar mais de um produto
     [Template]    Cadastrar mais de um produto
     FOR    ${counter}    IN RANGE    1    
-        Creatina BlackSkull    10    150
-        Whey Max    5    200
-        Whey Integral    8    250
-        Strap    10    25
-        Diabo Verde    5    90
-        Colageno    10    35
+        001    Creatina    g    10    85    001A
+        002    Whey        g    8    220    001B
+        003    Colageno    g    10    35    001C
                 
     END
 
