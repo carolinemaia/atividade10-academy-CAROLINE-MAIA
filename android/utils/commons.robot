@@ -77,6 +77,7 @@ Produto ja cadastrado
     Espera elemento e clica    ${PRODUTO_NOVO}
     [Arguments]    ${des}    ${qtd}    ${val}
     Produto somente com campos obrigatorios    ${des}    ${qtd}    ${val}
+    Click Element    ${PRODUTO_SALVAR}
 
 
 

@@ -24,18 +24,22 @@ ${PRODUTO_SALVAR}       xpath=//android.widget.Button[@resource-id="br.com.pztec
 ${PRODUTO_ID}           xpath=(//android.widget.TextView[@text="ID"])[1]
 ${PRODUTO_NOME}         xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
 ${PRODUTO}              xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/textView3"]
+
 ${ESTOQUE_ENTRADA}      xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/entrada"]
 ${ESTOQUE_ADICIONA}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdentrada"]
 ${ESTOQUE_SAIDA}        xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/saida"]
 ${ESTOQUE_DECREMENTA}    xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdsaida"]
 ${valor}                80
 ${PRODUTO_QUANTIDADE}   xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
+${PRODUTO_VALOR}        xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_valunit"]
 ${QUANTIDADE_SALVAR}    xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_salvar"]
 ${EDITAR}               xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/editar"]
 ${MENSAGEM}             xpath=//android.widget.TextView[@resource-id="android:id/message"]
 ${VALOR_ATUAL}           xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_qtdatual"]
 ${numero_inserido}    2000
 ${DELETE}                xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/deletar"]
+${CAMPO_PESQUISA}        xpath=//android.widget.EditText[@resource-id="android:id/search_src_text"]
+${PESQUISA_LIMPAR}       xpath=//android.widget.ImageView[@content-desc="Limpar consulta"]
 
     
 *** Keywords ***
@@ -125,18 +129,20 @@ Então é possivel editar dados do produto
     Espera elemento e clica    ${VALOR_UNIT_CAMPO}
     Input Text    ${VALOR_UNIT_CAMPO}   50
 
+    Click Element    ${PRODUTO_SALVAR}
+
 E é possível consultar as informações atualizadas na tela inicial
-    Wait Until Element Is Visible    ${DESCRICAO_CAMPO}
-    ${descricao_atualizada}=    Get Text    ${DESCRICAO_CAMPO}
+    Wait Until Element Is Visible    ${PRODUTO_NOME}
+    ${descricao_atualizada}=    Get Text    ${PRODUTO_NOME}
     Should Be Equal As Strings    ${descricao_atualizada}    PRODUTO BBC
 
-    Wait Until Element Is Visible    ${QUANTIDADE_CAMPO}
-    ${quantidade_atualizada}=    Get Text    ${QUANTIDADE_CAMPO}
+    Wait Until Element Is Visible    ${PRODUTO_QUANTIDADE}
+    ${quantidade_atualizada}=    Get Text    ${PRODUTO_QUANTIDADE}
     Should Be Equal As Strings    ${quantidade_atualizada}    50
     
-    Wait Until Element Is Visible    ${VALOR_UNIT_CAMPO}
-    ${valor_atualizado}=    Get Text    ${VALOR_UNIT_CAMPO}
-    Should Be Equal As Strings    ${valor_atualizado}    50
+    Wait Until Element Is Visible    ${PRODUTO_VALOR}
+    ${valor_atualizado}=    Get Text    ${PRODUTO_VALOR}
+    Should Be Equal As Strings    ${valor_atualizado}    50,00
 
 Então é possível editar data de validade do produto ja cadastrado
     Hide Keyboard
@@ -167,10 +173,57 @@ Quando acessar a funcionalidade de delete
 Então aparecerá a opção de confirmar a operação
     Espera elemento está visivel    ${MENSAGEM}
 
+#alterei de descricao pra produto_nome
 E ao confirmar o produto não deverá constar na pagina inicial
     Click Element    ${BUTTON_OK}
-    Wait Until Page Does Not Contain    ${DESCRICAO_CAMPO}
-    Page Should Not Contain Element     ${DESCRICAO_CAMPO}
+    Wait Until Page Does Not Contain    ${PRODUTO_NOME}
+    Page Should Not Contain Element     ${PRODUTO_NOME}  
+
+Dado que possui vários produtos cadastrados
+    Produto ja cadastrado    Produto 001    10    5
+    Click Element    ${PRODUTO_SALVAR}
+    Produto ja cadastrado    Produto 002    58    2
+    Click Element    ${PRODUTO_SALVAR}
+
+Quando acessa funcionalidade de pesquisa de produto
+    Espera elemento e clica    ${PRODUTO_PESQUISA}
+    Input Text    ${CAMPO_PESQUISA}    Produto 001
+    Press Keycode    66
+
+Então deve retornar resultado do produto pesquisado
+    Wait Until Element Is Visible  ${PRODUTO_NOME}
+
+    ${descr}=    Get Text    ${PRODUTO_NOME}
+
+    Should Be Equal    ${descr}    Produto 001
+
+Dado que o usuário está na tela inicial
+    Espera elemento está visivel    ${CADASTRO_PRODUTO}
+    Element Should Be Visible    ${MENU}
+    Element Should Be Visible    ${PRODUTO_NOVO}
+
+E acessa funcionalidade de pesquisa de produto inserindo nome
+    Quando acessa funcionalidade de pesquisa de produto
+
+E acessa funcionalidade de limpar pesquisa
+    Click Element    ${PESQUISA_LIMPAR}
+
+Então o campo de busca deve está limpo
+    Wait Until Element Is Visible    ${CAMPO_PESQUISA}
+    ${busca}=  Get Text  ${CAMPO_PESQUISA}
+    Should Not Contain    ${busca}    Produto 001
+
+E acessa funcionalidade de pesquisa de produto
+    Click Element    ${PRODUTO_PESQUISA}
+
+Quando acessa funcionalidade de limpar pesquisa
+    E acessa funcionalidade de limpar pesquisa
+
+Então a opção de digitar o produto deve ser finalizado
+    Page Should Not Contain Element    ${CAMPO_PESQUISA}   
+    
+
+
 
     
     
