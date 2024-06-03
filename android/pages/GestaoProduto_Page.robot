@@ -24,7 +24,6 @@ ${PRODUTO_SALVAR}       xpath=//android.widget.Button[@resource-id="br.com.pztec
 ${PRODUTO_ID}           xpath=(//android.widget.TextView[@text="ID"])[1]
 ${PRODUTO_NOME}         xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
 ${PRODUTO}              xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/textView3"]
-
 ${ESTOQUE_ENTRADA}      xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/entrada"]
 ${ESTOQUE_ADICIONA}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdentrada"]
 ${ESTOQUE_SAIDA}        xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/saida"]
