@@ -23,15 +23,18 @@ Espera para visualizar o elemento
     [Arguments]    ${elemento}
     Wait Until Keyword Succeeds    4    1    Element Should Be Visible    ${elemento}
 
-Produto cadastrado
+Cadastrar mais de um produto
+    [Arguments]    ${desc_produto1}    ${qtd_produto}    ${val_unit}
     Espera elemento e clica    ${PRODUTO_NOVO}
     Espera elemento e clica    ${DESCRICAO_CAMPO}
-    Input Text    ${DESCRICAO_CAMPO}    PRODUTO AAC
+    Input Text    ${DESCRICAO_CAMPO}    ${desc_produto1}
     Espera elemento e clica    ${QUANTIDADE_CAMPO}
-    Input Text    ${QUANTIDADE_CAMPO}    100
+    Input Text    ${QUANTIDADE_CAMPO}    ${qtd_produto}
     Espera elemento e clica    ${VALOR_UNIT_CAMPO}
-    Input Text    ${VALOR_UNIT_CAMPO}    10
+    Input Text    ${VALOR_UNIT_CAMPO}    ${val_unit}
     Click Element    ${PRODUTO_SALVAR}
+
+[Arguments]    ${desc_produto1}    ${qtd_produto}    ${val_unit}
 
 Altera a validade
     Hide Keyboard
@@ -43,3 +46,53 @@ Decrementa estoque
     [Arguments]    ${element}
     Espera elemento e clica    ${ESTOQUE_DECREMENTA}
     Input Text    ${ESTOQUE_DECREMENTA}    ${element}
+
+Novo produto com todos os campos
+    [Arguments]    ${cod}    ${des}    ${uni}    ${qtd}    ${val}    ${lot}
+    Espera elemento e clica    ${CODIGO_CAMPO}
+    Input Text    ${CODIGO_CAMPO}    ${cod}
+
+    Espera elemento e clica    ${DESCRICAO_CAMPO}
+    Input Text    ${DESCRICAO_CAMPO}    ${des}
+
+    Espera elemento e clica    ${UNIDADE_CAMPO}
+    Input Text    ${UNIDADE_CAMPO}    ${uni}
+
+    Espera elemento e clica    ${QUANTIDADE_CAMPO}
+    Input Text    ${QUANTIDADE_CAMPO}    ${qtd}
+
+    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
+    Input Text    ${VALOR_UNIT_CAMPO}    ${val}
+
+    Espera elemento e clica    ${LOTE_CAMPO}
+    Input Text    ${LOTE_CAMPO}    ${lot}
+
+Produto somente com campos obrigatorios
+    
+    [Arguments]    ${des}    ${qtd}    ${val}
+    Espera elemento e clica    ${DESCRICAO_CAMPO}
+    Input Text    ${DESCRICAO_CAMPO}    ${des}
+    
+    Espera elemento e clica    ${QUANTIDADE_CAMPO}
+    Input Text    ${QUANTIDADE_CAMPO}    ${qtd}
+
+    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
+    Input Text    ${VALOR_UNIT_CAMPO}    ${val}
+    
+
+Produto ja cadastrado
+    Espera elemento e clica    ${PRODUTO_NOVO}
+    [Arguments]    ${des}    ${qtd}    ${val}
+    Espera elemento e clica    ${DESCRICAO_CAMPO}
+    Input Text    ${DESCRICAO_CAMPO}    ${des}
+    
+    Espera elemento e clica    ${QUANTIDADE_CAMPO}
+    Input Text    ${QUANTIDADE_CAMPO}    ${qtd}
+
+    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
+    Input Text    ${VALOR_UNIT_CAMPO}    ${val}
+    Click Element    ${PRODUTO_SALVAR}
+
+
+
+    

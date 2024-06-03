@@ -6,21 +6,20 @@ Resource    ../utils//commons.robot
 
 
 *** Variables ***
+${CODIGO_CAMPO}         xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_codigo"]
 ${DESCRICAO}            xpath=//android.widget.TextView[@text="Descrição"]
 ${DESCRICAO_CAMPO}      xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
-${UNIDADE}              xpath=//android.widget.TextView[@text="Unidade"]
 ${UNIDADE_CAMPO}        xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_unidade"]
 ${QUANTIDADE}           xpath=//android.widget.TextView[@text="Quantidade"]
 ${QUANTIDADE_CAMPO}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
 ${VALOR_UNIT}           xpath=//android.widget.TextView[@text="Val.Unit."]
 ${VALOR_UNIT_CAMPO}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_valunit"]
-${LOTE}                 xpath=//android.widget.TextView[@text="Lote"]
 ${LOTE_CAMPO}           xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_lote"]
 ${DATA}                 xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data"]
 ${VALIDADE_DATA}        xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_validade"]
 ${DATA_INSERIR}         xpath=//android.view.View[@content-desc="28 junho 2024"]
 ${DATA_CANCELAR}        xpath=//android.widget.Button[@resource-id="android:id/button2"]
-${BUTTON_OK}              xpath=//android.widget.Button[@resource-id="android:id/button1"]
+${BUTTON_OK}            xpath=//android.widget.Button[@resource-id="android:id/button1"]
 ${PRODUTO_SALVAR}       xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_gravar_assunto"]
 ${PRODUTO_ID}           xpath=(//android.widget.TextView[@text="ID"])[1]
 ${PRODUTO_NOME}         xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
@@ -33,22 +32,20 @@ ${valor}                80
 ${PRODUTO_QUANTIDADE}   xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
 ${QUANTIDADE_SALVAR}    xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_salvar"]
 ${EDITAR}               xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/editar"]
-${ESTOQUE_INSUFICIENTE}    xpath=//android.widget.TextView[@resource-id="android:id/message"]
+${MENSAGEM}             xpath=//android.widget.TextView[@resource-id="android:id/message"]
 ${VALOR_ATUAL}           xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_qtdatual"]
 ${numero_inserido}    2000
+${DELETE}                xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/deletar"]
 
     
 *** Keywords ***
 Dado que o usuário acessa tela de cadastro de produto
     Espera elemento e clica    ${PRODUTO_NOVO}
 
+Quando preencher todos os campos do novo produto
+    Novo produto com todos os campos    01    Pasta de Amendoin    g    15    65    001A
 Quando preencher os campos obrigatórios do novo produto
-    Espera elemento e clica    ${DESCRICAO_CAMPO}
-    Input Text    ${DESCRICAO_CAMPO}    PRODUTO AAC
-    Espera elemento e clica    ${QUANTIDADE_CAMPO}
-    Input Text    ${QUANTIDADE_CAMPO}    100
-    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
-    Input Text    ${VALOR_UNIT_CAMPO}    10
+    Produto somente com campos obrigatorios    Creatina Max    5    85  
 
 Então o produto será cadastrado com sucesso
     Espera elemento e clica    ${PRODUTO_SALVAR}
@@ -78,7 +75,7 @@ Então não será possível cadastrar produto permanecendo na tela de cadastro c
     Espera elemento está visivel    ${VALOR_UNIT}
 
 Dado que possui produto cadastrado
-    Produto cadastrado
+    Produto ja cadastrado    Produto AA1    100    5
 
 E acessa funcionalidade de entrada de produtos
   
@@ -157,11 +154,24 @@ Então uma mensagem com alerta que estoque está insuficiente deverá ser exibid
     ${valor}=  Get Text  ${VALOR_ATUAL}
     ${valor}=  Convert To Integer  ${valor}
     Click Element    ${QUANTIDADE_SALVAR}
-    Run Keyword If    ${numero_inserido} > ${valor}    Espera elemento está visivel    ${ESTOQUE_INSUFICIENTE}
+    Run Keyword If    ${numero_inserido} > ${valor}    Espera elemento está visivel    ${MENSAGEM}
     
-
 E ao clicar em ok retorna para formulário
     Espera elemento e clica    ${BUTTON_OK}
+
+Quando acessar a funcionalidade de delete
+    Espera elemento e clica    ${DELETE}
+
+Então aparecerá a opção de confirmar a operação
+    Espera elemento está visivel    ${MENSAGEM}
+
+E ao confirmar o produto não deverá constar na pagina inicial
+    Click Element    ${BUTTON_OK}
+    Wait Until Page Does Not Contain    ${DESCRICAO_CAMPO}
+    Page Should Not Contain Element     ${DESCRICAO_CAMPO}
+
+    
+    
     
     
     

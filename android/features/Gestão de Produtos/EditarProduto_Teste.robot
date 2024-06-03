@@ -8,7 +8,7 @@ Test Teardown     Teardown
 
 *** Test Cases ***
 
-CT001 - Deve ser possivel editar quantidade de estoque
+CT001 - Deve ser possivel editar informações do produto
     Dado que possui produto cadastrado
     E acessa funcionalidade de edição de produto
     Então é possivel editar dados do produto
@@ -19,6 +19,12 @@ CT002 - Deve ser possivel editar validade do produto
     E acessa funcionalidade de edição de produto
     Então é possível editar data de validade do produto ja cadastrado
     E é possível consultar a data atualizada na tela inicial
+
+CT003 - Deve ser possível deletar produto cadastrado
+    Dado que possui produto cadastrado
+    Quando acessar a funcionalidade de delete
+    Então aparecerá a opção de confirmar a operação
+    E ao confirmar o produto não deverá constar na pagina inicial
 
 
 
