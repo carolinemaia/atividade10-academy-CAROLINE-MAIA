@@ -104,10 +104,10 @@ Então não será possível cadastrar produto permanecendo na tela de cadastro c
 Dado que possui produto cadastrado
     Produto ja cadastrado    Produto AA1    100    5
 
-E acessa funcionalidade de entrada de produtos
+E o usuário acessa funcionalidade de entrada de produtos
     Espera elemento e clica    ${ESTOQUE_ENTRADA}
 
-Quando adiciona quantidade de produto no estoque  
+Quando o usuário adiciona quantidade de produto no estoque  
     Espera elemento e clica    ${ESTOQUE_ADICIONA}
     Press Keycode    15
     Press Keycode    7
@@ -116,20 +116,16 @@ E acessar a funcionalidade salvar estoque
     Click Element    ${QUANTIDADE_SALVAR}
 
 Então é possivel visualizar um aumento de quantidade do produto na pagina inicial
-    Wait Until Element Is Visible    ${PRODUTO_QUANTIDADE}
-    ${quantidade}=    Get Text    ${PRODUTO_QUANTIDADE}
-    Should Be Equal As Strings    ${quantidade}    180.0   
+    Consultar dados atualizados do produto    ${PRODUTO_QUANTIDADE}    180.0 
 
-E acessa funcionalidade de saida de produtos
+E o usuário acessa funcionalidade de saida de produtos
     Espera elemento e clica    ${ESTOQUE_SAIDA}
 
-Quando diminui quantidade de produto no estoque
+Quando o usuário diminui quantidade de produto no estoque
     Decrementa estoque    80
 
 Então é possivel visualizar uma diminuição de quantidade do produto na pagina inicial
-    Wait Until Element Is Visible     ${PRODUTO_QUANTIDADE}
-    ${quantidade}=    Get Text        ${PRODUTO_QUANTIDADE}
-    Should Be Equal As Strings        ${quantidade}    20.0
+    Consultar dados atualizados do produto    ${PRODUTO_QUANTIDADE}    20.0
 
 E acessa funcionalidade de edição de produto
     Espera elemento e clica    ${EDITAR}
@@ -148,18 +144,6 @@ E é possível consultar as informações atualizadas na tela inicial
     Consultar dados atualizados do produto    ${PRODUTO_QUANTIDADE}    50
     Consultar dados atualizados do produto    ${PRODUTO_VALOR}         50,00
 
-    # Wait Until Element Is Visible    ${PRODUTO_NOME}
-    # ${descricao_atualizada}=    Get Text    ${PRODUTO_NOME}
-    # Should Be Equal As Strings    ${descricao_atualizada}    PRODUTO BBC
-
-    # Wait Until Element Is Visible    ${PRODUTO_QUANTIDADE}
-    # ${quantidade_atualizada}=    Get Text    ${PRODUTO_QUANTIDADE}
-    # Should Be Equal As Strings    ${quantidade_atualizada}    50
-    
-    # Wait Until Element Is Visible    ${PRODUTO_VALOR}
-    # ${valor_atualizado}=    Get Text    ${PRODUTO_VALOR}
-    # Should Be Equal As Strings    ${valor_atualizado}    50,00
-
 Então é possível editar data de validade do produto ja cadastrado
     Hide Keyboard
     Altera a validade
@@ -168,10 +152,6 @@ Então é possível editar data de validade do produto ja cadastrado
 E é possível consultar a data atualizada na tela inicial
     Espera elemento está visivel    ${VALIDADE_DATA}
     Consultar dados atualizados do produto    ${VISUALIZAR_PDF}    28/06/2024
-    
-    # Wait Until Element Is Visible    ${VALIDADE_DATA}
-    # ${descricao_atualizada}=    Get Text    ${VALIDADE_DATA}
-    # Should Be Equal As Strings    ${descricao_atualizada}    28/06/2024
 
 Quando diminui quantidade de produto no estoque com numero maior que a quantidade atual
     Decrementa estoque    ${numero_inserido}    
