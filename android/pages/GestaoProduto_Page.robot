@@ -127,10 +127,10 @@ Quando o usuário diminui quantidade de produto no estoque
 Então é possivel visualizar uma diminuição de quantidade do produto na pagina inicial
     Consultar dados atualizados do produto    ${PRODUTO_QUANTIDADE}    20.0
 
-E acessa funcionalidade de edição de produto
+E o usuário acessa funcionalidade de edição de produto
     Espera elemento e clica    ${EDITAR}
 
-Então é possivel editar dados do produto
+Então é possivel o usuário editar dados do produto
     Wait Until Element Is Visible    ${PRODUTO}
 
     Editar Produto    ${DESCRICAO_CAMPO}     PRODUTO BBC
@@ -144,14 +144,14 @@ E é possível consultar as informações atualizadas na tela inicial
     Consultar dados atualizados do produto    ${PRODUTO_QUANTIDADE}    50
     Consultar dados atualizados do produto    ${PRODUTO_VALOR}         50,00
 
-Então é possível editar data de validade do produto ja cadastrado
+Então é possível o usuário editar data de validade do produto ja cadastrado
     Hide Keyboard
     Altera a validade
     Click Element    ${PRODUTO_SALVAR}
 
 E é possível consultar a data atualizada na tela inicial
     Espera elemento está visivel    ${VALIDADE_DATA}
-    Consultar dados atualizados do produto    ${VISUALIZAR_PDF}    28/06/2024
+    Consultar dados atualizados do produto    ${VALIDADE_DATA}    28/06/2024
 
 Quando diminui quantidade de produto no estoque com numero maior que a quantidade atual
     Decrementa estoque    ${numero_inserido}    
@@ -167,7 +167,7 @@ Então uma mensagem com alerta que estoque está insuficiente deverá ser exibid
 E ao clicar em ok retorna para formulário
     Espera elemento e clica    ${BUTTON_OK}
 
-Quando acessar a funcionalidade de delete
+Quando o usuário acessar a funcionalidade de delete
     Espera elemento e clica    ${DELETE}
 
 Então aparecerá a opção de confirmar a operação
