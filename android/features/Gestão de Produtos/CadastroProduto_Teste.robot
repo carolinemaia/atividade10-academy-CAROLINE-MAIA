@@ -28,13 +28,10 @@ CT003 - Não deve ser possivel cadastrar novo produto sem informar os dados obri
     Então não será possível cadastrar produto permanecendo na tela de cadastro com os campos obrigatórios sinalizados
 
 CT004 - Cadastrar mais de um produto
-    [Template]    Cadastrar mais de um produto
-    FOR    ${counter}    IN RANGE    1    
+    [Template]    Cadastrar mais de um produto  
         001    Creatina    g    10    85    001A
         002    Whey        g    8    220    001B
         003    Colageno    g    10    35    001C
-                
-    END
 
     
     

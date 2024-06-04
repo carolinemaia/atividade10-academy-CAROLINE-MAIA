@@ -25,9 +25,9 @@ Espera para visualizar o elemento
 
 Cadastrar mais de um produto
     [Arguments]    ${cod}    ${des}    ${uni}    ${qtd}    ${val}    ${lot}
-    Espera elemento e clica    ${PRODUTO_NOVO}
+    Dado que o usuário acessa tela de cadastro de produto
     Novo produto com todos os campos    ${cod}    ${des}    ${uni}    ${qtd}    ${val}    ${lot}
-    Click Element    ${PRODUTO_SALVAR}
+    Então o produto será cadastrado com sucesso
 
 Altera a validade
     Hide Keyboard
@@ -91,6 +91,18 @@ Selecionar Datas
     Espera elemento e clica    ${DATA_FINAL}
     Click Element    ${data2}
     Click Element    ${BUTTON_OK}
+
+Editar Produto
+    [Arguments]    ${CAMPO}    ${element}
+    Clear Text    ${CAMPO}
+    Espera elemento e clica    ${CAMPO}
+    Input Text    ${CAMPO}    ${element}
+
+Consultar dados atualizados do produto
+    [Arguments]    ${CAMPO}    ${element}      
+    Wait Until Element Is Visible    ${CAMPO}
+    ${dado_atualizado}=    Get Text    ${CAMPO}
+    Should Be Equal As Strings    ${dado_atualizado}    ${element}
 
 
 

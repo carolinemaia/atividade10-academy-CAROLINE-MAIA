@@ -6,40 +6,59 @@ Resource    ../utils/commons.robot
 
 
 *** Variables ***
-${CODIGO_CAMPO}         xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_codigo"]
-${PRODUTO_COD}          xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_codigo"]
-${DESCRICAO}            xpath=//android.widget.TextView[@text="Descrição"]
-${DESCRICAO_CAMPO}      xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
-${UNIDADE_CAMPO}        xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_unidade"]
-${QUANTIDADE}           xpath=//android.widget.TextView[@text="Quantidade"]
-${QUANTIDADE_CAMPO}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
-${VALOR_UNIT}           xpath=//android.widget.TextView[@text="Val.Unit."]
-${VALOR_UNIT_CAMPO}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_valunit"]
-${LOTE_CAMPO}           xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_lote"]
-${DATA}                 xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data"]
-${VALIDADE_DATA}        xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_validade"]
-${DATA_INSERIR}         xpath=//android.view.View[@content-desc="28 junho 2024"]
-${DATA_CANCELAR}        xpath=//android.widget.Button[@resource-id="android:id/button2"]
-${BUTTON_OK}            xpath=//android.widget.Button[@resource-id="android:id/button1"]
-${PRODUTO_SALVAR}       xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_gravar_assunto"]
-${PRODUTO_ID}           xpath=(//android.widget.TextView[@text="ID"])[1]
-${PRODUTO_NOME}         xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
-${PRODUTO}              xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/textView3"]
-${ESTOQUE_ENTRADA}      xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/entrada"]
-${ESTOQUE_ADICIONA}     xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdentrada"]
-${ESTOQUE_SAIDA}        xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/saida"]
-${ESTOQUE_DECREMENTA}    xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdsaida"]
-${valor}                80
-${PRODUTO_QUANTIDADE}   xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
-${PRODUTO_VALOR}        xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_valunit"]
-${QUANTIDADE_SALVAR}    xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_salvar"]
-${EDITAR}               xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/editar"]
-${MENSAGEM}             xpath=//android.widget.TextView[@resource-id="android:id/message"]
-${VALOR_ATUAL}           xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_qtdatual"]
+#atalhos 
+${PRODUTO_NOVO}              id=br.com.pztec.estoque:id/Button1
+${MENU}                      id=br.com.pztec.estoque:id/Button3
+
+#pesquisaProduto
+${PRODUTO_PESQUISA}          xpath=//android.widget.ImageView[@content-desc="Pesquisar"]
+${CONSULTA_FECHAR}           xpath=//android.widget.ImageView[@content-desc="Limpar consulta"]
+${CAMPO_PESQUISA}            xpath=//android.widget.EditText[@resource-id="android:id/search_src_text"]
+
+#descricao
+${CADASTRO_PRODUTO}          xpath=//android.widget.TextView[@text="Cadastro de Produtos"]
+${DESCRICAO}                 xpath=//android.widget.TextView[@text="Descrição"]
+${QUANTIDADE}                xpath=//android.widget.TextView[@text="Quantidade"]
+${PRODUTO}                   id=br.com.pztec.estoque:id/textView3
+
+#inserir/editar produto
+${CODIGO_CAMPO}              xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_codigo"]
+${DESCRICAO_CAMPO}           xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
+${UNIDADE_CAMPO}             xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_unidade"]
+${QUANTIDADE_CAMPO}          xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_quantidade"]
+${VALOR_UNIT_CAMPO}          xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_valunit"]
+${LOTE_CAMPO}                xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_lote"]
+${DATA_INSERIR}              xpath=//android.view.View[@content-desc="28 junho 2024"]
+
+#visualizar produto
+${PRODUTO_COD}               xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_codigo"]
+${VALOR_UNIT}                xpath=//android.widget.TextView[@text="Val.Unit."]
+${DATA}                      xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data"]
+${VALIDADE_DATA}             xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_validade"]
+${PRODUTO_ID}                xpath=(//android.widget.TextView[@text="ID"])[1]
+${PRODUTO_NOME}              xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
+
+#botões
+${DATA_CANCELAR}             id=android:id/button2
+${BUTTON_OK}                 id=android:id/button1
+${PRODUTO_SALVAR}            id=br.com.pztec.estoque:id/btn_gravar_assunto
+${ESTOQUE_ENTRADA}           id=br.com.pztec.estoque:id/entrada
+${ESTOQUE_SAIDA}             id=br.com.pztec.estoque:id/saida
+${QUANTIDADE_SALVAR}         id=br.com.pztec.estoque:id/btn_salvar
+${EDITAR}                    id=br.com.pztec.estoque:id/editar
+${DELETE}                    id=br.com.pztec.estoque:id/deletar
+
+#outras
+${ESTOQUE_ADICIONA}          id=br.com.pztec.estoque:id/txt_qtdentrada
+${ESTOQUE_DECREMENTA}        id=br.com.pztec.estoque:id/txt_qtdsaida
+${PRODUTO_QUANTIDADE}        id=br.com.pztec.estoque:id/txt_quantidade
+${PRODUTO_VALOR}             id=br.com.pztec.estoque:id/txt_valunit
+${MENSAGEM}                  id=android:id/message
+${VALOR_ATUAL}               id=br.com.pztec.estoque:id/txt_qtdatual
+
+#inserindo valores
 ${numero_inserido}    2000
-${DELETE}                xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/deletar"]
-${CAMPO_PESQUISA}        xpath=//android.widget.EditText[@resource-id="android:id/search_src_text"]
-${PESQUISA_LIMPAR}       xpath=//android.widget.ImageView[@content-desc="Limpar consulta"]
+${valor}                80
 
     
 *** Keywords ***
@@ -48,15 +67,17 @@ Dado que o usuário acessa tela de cadastro de produto
 
 Quando preencher todos os campos do novo produto
     Novo produto com todos os campos    01    Pasta de Amendoin    g    15    65    001A
+
 Quando preencher os campos obrigatórios do novo produto
     Produto somente com campos obrigatorios    Creatina Max    5    85  
 
 Então o produto será cadastrado com sucesso
     Espera elemento e clica    ${PRODUTO_SALVAR}
+
 E o produto pode ser consultado na listagem de produtos na tela inicial
     Espera elemento está visivel    ${PRODUTO_NOME}
-    Element Should Contain Text    ${PRODUTO_COD}    01
-    Element Should Contain Text    ${PRODUTO_NOME}    Pasta de Amendoin
+    Element Should Contain Text     ${PRODUTO_COD}     01
+    Element Should Contain Text     ${PRODUTO_NOME}    Pasta de Amendoin
 
 E alterar a validade do produto
     Altera a validade
@@ -116,32 +137,28 @@ E acessa funcionalidade de edição de produto
 Então é possivel editar dados do produto
     Wait Until Element Is Visible    ${PRODUTO}
 
-    Clear Text    ${DESCRICAO_CAMPO}
-    Espera elemento e clica    ${DESCRICAO_CAMPO}
-    Input Text    ${DESCRICAO_CAMPO}    PRODUTO BBC
-    
-    Clear Text    ${QUANTIDADE_CAMPO}
-    Espera elemento e clica    ${QUANTIDADE_CAMPO}
-    Input Text    ${QUANTIDADE_CAMPO}   50
-    
-    Clear Text    ${VALOR_UNIT_CAMPO}
-    Espera elemento e clica    ${VALOR_UNIT_CAMPO}
-    Input Text    ${VALOR_UNIT_CAMPO}   50
+    Editar Produto    ${DESCRICAO_CAMPO}     PRODUTO BBC
+    Editar Produto    ${QUANTIDADE_CAMPO}    50
+    Editar Produto    ${VALOR_UNIT_CAMPO}    50
 
     Click Element    ${PRODUTO_SALVAR}
 
 E é possível consultar as informações atualizadas na tela inicial
-    Wait Until Element Is Visible    ${PRODUTO_NOME}
-    ${descricao_atualizada}=    Get Text    ${PRODUTO_NOME}
-    Should Be Equal As Strings    ${descricao_atualizada}    PRODUTO BBC
+    Consultar dados atualizados do produto    ${PRODUTO_NOME}          PRODUTO BBC
+    Consultar dados atualizados do produto    ${PRODUTO_QUANTIDADE}    50
+    Consultar dados atualizados do produto    ${PRODUTO_VALOR}         50,00
 
-    Wait Until Element Is Visible    ${PRODUTO_QUANTIDADE}
-    ${quantidade_atualizada}=    Get Text    ${PRODUTO_QUANTIDADE}
-    Should Be Equal As Strings    ${quantidade_atualizada}    50
+    # Wait Until Element Is Visible    ${PRODUTO_NOME}
+    # ${descricao_atualizada}=    Get Text    ${PRODUTO_NOME}
+    # Should Be Equal As Strings    ${descricao_atualizada}    PRODUTO BBC
+
+    # Wait Until Element Is Visible    ${PRODUTO_QUANTIDADE}
+    # ${quantidade_atualizada}=    Get Text    ${PRODUTO_QUANTIDADE}
+    # Should Be Equal As Strings    ${quantidade_atualizada}    50
     
-    Wait Until Element Is Visible    ${PRODUTO_VALOR}
-    ${valor_atualizado}=    Get Text    ${PRODUTO_VALOR}
-    Should Be Equal As Strings    ${valor_atualizado}    50,00
+    # Wait Until Element Is Visible    ${PRODUTO_VALOR}
+    # ${valor_atualizado}=    Get Text    ${PRODUTO_VALOR}
+    # Should Be Equal As Strings    ${valor_atualizado}    50,00
 
 Então é possível editar data de validade do produto ja cadastrado
     Hide Keyboard
@@ -149,15 +166,19 @@ Então é possível editar data de validade do produto ja cadastrado
     Click Element    ${PRODUTO_SALVAR}
 
 E é possível consultar a data atualizada na tela inicial
-    Wait Until Element Is Visible    ${VALIDADE_DATA}
-    ${descricao_atualizada}=    Get Text    ${VALIDADE_DATA}
-    Should Be Equal As Strings    ${descricao_atualizada}    28/06/2024
+    Espera elemento está visivel    ${VALIDADE_DATA}
+    Consultar dados atualizados do produto    ${VISUALIZAR_PDF}    28/06/2024
+    
+    # Wait Until Element Is Visible    ${VALIDADE_DATA}
+    # ${descricao_atualizada}=    Get Text    ${VALIDADE_DATA}
+    # Should Be Equal As Strings    ${descricao_atualizada}    28/06/2024
 
 Quando diminui quantidade de produto no estoque com numero maior que a quantidade atual
     Decrementa estoque    ${numero_inserido}    
     
 Então uma mensagem com alerta que estoque está insuficiente deverá ser exibida não permitindo finalizar operação
-    Wait Until Element Is Visible    ${VALOR_ATUAL}
+    Espera elemento está visivel    ${VALOR_ATUAL}
+
     ${valor}=  Get Text  ${VALOR_ATUAL}
     ${valor}=  Convert To Integer  ${valor}
     Click Element    ${QUANTIDADE_SALVAR}
@@ -172,7 +193,6 @@ Quando acessar a funcionalidade de delete
 Então aparecerá a opção de confirmar a operação
     Espera elemento está visivel    ${MENSAGEM}
 
-#alterei de descricao pra produto_nome
 E ao confirmar o produto não deverá constar na pagina inicial
     Click Element    ${BUTTON_OK}
     Wait Until Page Does Not Contain    ${PRODUTO_NOME}
@@ -205,7 +225,7 @@ E acessa funcionalidade de pesquisa de produto inserindo nome
     Quando acessa funcionalidade de pesquisa de produto
 
 E acessa funcionalidade de limpar pesquisa
-    Click Element    ${PESQUISA_LIMPAR}
+    Click Element    ${CONSULTA_FECHAR}
 
 Então o campo de busca deve está limpo
     Wait Until Element Is Visible    ${CAMPO_PESQUISA}
