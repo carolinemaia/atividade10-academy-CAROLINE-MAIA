@@ -20,7 +20,7 @@ ${ARQUIVO_BACKUP}        xpath=//android.widget.LinearLayout[@resource-id="andro
 Dado que usuário acessa o MENU na tela inicial
     Espera elemento e clica    ${MENU}
 
-Quando acessa a funcionalidade de Backup
+Quando o usuário acessa a funcionalidade de Backup
     Espera elemento e clica    ${BACKUP}
 
 Então deve ser possível visualizar todas as informações sobre backup
@@ -32,9 +32,9 @@ Então deve ser possível visualizar todas as informações sobre backup
 
 Dado que usuário acessa a funcionalidade de Backup
     Dado que usuário acessa o MENU na tela inicial
-    Quando acessa a funcionalidade de Backup
+    Quando o usuário acessa a funcionalidade de Backup
 
-Quando clica na função Gerar Backup
+Quando o usuário clica na função Gerar Backup
     Espera elemento e clica    ${GERAR_BACKUP}
 
 Então deve aparecer um alerta de Operação Concluida
@@ -47,7 +47,7 @@ E o backup deve ser gerado com informações da geração
 E tem backup gerado
     Espera para visualizar o elemento    ${DADOS_BACKUP}
 
-Quando acessa a funcionalidade de enviar backup
+Quando o usuário acessa a funcionalidade de enviar backup
     Click Element    ${ENVIAR_BACKUP}
 
 Então o aplicativo deverá informar as opções para envio do backup
