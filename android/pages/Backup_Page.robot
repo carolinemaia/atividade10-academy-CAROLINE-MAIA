@@ -50,7 +50,7 @@ E tem backup gerado
 Quando acessa a funcionalidade de enviar backup
     Click Element    ${ENVIAR_BACKUP}
 
-Então o dispositivo deverá informar as opções para envio do backup
+Então o aplicativo deverá informar as opções para envio do backup
     Espera para visualizar o elemento    ${COMPARTILHAR}
     Element Should Be Visible    ${ARQUIVO_BACKUP}
     Go Back
