@@ -6,6 +6,7 @@ Test Setup        Open App
 Test Teardown     Teardown
 
 
+#necessário cadastrar produtos para executar os cenários abaixo
 *** Test Cases ***
 CT001 - Deve ser possivel pesquisar produto cadastrado
     Dado que possui vários produtos cadastrados
