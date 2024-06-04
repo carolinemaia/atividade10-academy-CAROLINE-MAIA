@@ -21,6 +21,7 @@ ${DESCRICAO}                 xpath=//android.widget.TextView[@text="Descrição"
 ${QUANTIDADE}                xpath=//android.widget.TextView[@text="Quantidade"]
 ${PRODUTO}                   id=br.com.pztec.estoque:id/textView3
 
+#nos codigos abaixo não utilizei id pois alguns são .EditText e outros .TextView
 #inserir/editar produto
 ${CODIGO_CAMPO}              xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_codigo"]
 ${DESCRICAO_CAMPO}           xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_descricao"]

@@ -6,15 +6,15 @@ Resource    ../utils/commons.robot
 
 
 *** Variables ***
-${EXPORTAR}             xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_exportar"]
-${GERAR_EXPORTACAO}     xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_gerar"]
-${ENVIAR_PROD}          xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_prod"]
-${produto_csv}          xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/datafileprod"]
-${arquivo_compart}      xpath=//android.widget.TextView[@resource-id="android:id/content_preview_filename"]
-${entrada_csv}          xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/datafileent"]
-${ENVIAR_ENTRADA}       xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_ent"]
-${saida_csv}            xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/datafilesai"]
-${ENVIAR_SAIDA}         xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_sai"]
+${EXPORTAR}             id=br.com.pztec.estoque:id/btn_exportar
+${GERAR_EXPORTACAO}     id=br.com.pztec.estoque:id/btn_gerar
+${ENVIAR_PROD}          id=br.com.pztec.estoque:id/btn_prod
+${produto_csv}          id=br.com.pztec.estoque:id/datafileprod
+${arquivo_compart}      id=android:id/content_preview_filename
+${entrada_csv}          id=br.com.pztec.estoque:id/datafileent
+${ENVIAR_ENTRADA}       id=br.com.pztec.estoque:id/btn_ent
+${saida_csv}            id=br.com.pztec.estoque:id/datafilesai
+${ENVIAR_SAIDA}         id=br.com.pztec.estoque:id/btn_sai
 ${grupo_csv}            id=br.com.pztec.estoque:id/datafilegrupo
 ${ENVIAR_GRUPO}         id=br.com.pztec.estoque:id/btn_grupo
 
@@ -55,8 +55,8 @@ Então o aplicativo deverá informar as opções para envio do arquivo exportado
 
 Dado que possui movimentação de entrada de estoque
     Dado que possui produto cadastrado
-    E acessa funcionalidade de entrada de produtos
-    Quando adiciona quantidade de produto no estoque
+    E o usuário acessa funcionalidade de entrada de produtos
+    Quando o usuário adiciona quantidade de produto no estoque
     E acessar a funcionalidade salvar estoque
 
 E possui arquivos de entrada para serem exportados
@@ -67,15 +67,15 @@ Quando clica em enviar arquivo de entrada
 
 Dado que possui movimentação de saída de estoque
     Dado que possui produto cadastrado
-    E acessa funcionalidade de saida de produtos
-    Quando diminui quantidade de produto no estoque
+    E o usuário acessa funcionalidade de saida de produtos
+    Quando o usuário diminui quantidade de produto no estoque
     E acessar a funcionalidade salvar estoque
 
 E possui arquivos de saída para serem exportados
     Espera elemento está visivel    ${saida_csv}
 
 Quando clica em enviar arquivo de saída
-    Click Element    ${ENVIAR_SAIDA}
+    Wait Until Keyword Succeeds    10    1    Click Element    ${ENVIAR_SAIDA}
 
 E possui arquivos de grupos para serem exportados
     Espera elemento está visivel    ${grupo_csv}

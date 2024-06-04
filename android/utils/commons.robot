@@ -63,7 +63,7 @@ Novo produto com todos os campos
 Produto somente com campos obrigatorios
     
     [Arguments]    ${des}    ${qtd}    ${val}
-    Espera elemento e clica    ${DESCRICAO_CAMPO}
+    Wait Until Keyword Succeeds    8    1    Click Element    ${DESCRICAO_CAMPO}
     Input Text    ${DESCRICAO_CAMPO}    ${des}
     
     Espera elemento e clica    ${QUANTIDADE_CAMPO}

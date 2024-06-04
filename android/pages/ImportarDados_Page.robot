@@ -13,7 +13,7 @@ ${RESTAURAR_SAIDAS}      id=br.com.pztec.estoque:id/btn_saidas
 ${RESTAURAR_GRUPOS}      id=br.com.pztec.estoque:id/btn_grupos
 ${PASTA_ESTOQUE}         xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="Estoque"]
 #arquivos
-${import_prod}           xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="produtos.csv"]
+${import_prod}           id="android:id/text1" and @text="produtos.csv"]
 ${import_entrad}         xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="entradas.csv"]
 ${import_saidas}         xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="saidas.csv"]
 ${import_grupos}         xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="grupos.csv"]
@@ -60,8 +60,8 @@ E ao acessar a pagina inicial poderá visualizar o produto restaurado através d
 
 Dado que possui arquivos de exportação de entradas na pasta Estoque
     Produto ja cadastrado    Produto 001    100    20
-    E acessa funcionalidade de entrada de produtos
-    Quando adiciona quantidade de produto no estoque
+    E o usuário acessa funcionalidade de entrada de produtos
+    Quando o usuário adiciona quantidade de produto no estoque
     Click Element    ${QUANTIDADE_SALVAR}
     E o usuário acessa a funcionalidade de Exportar Dados
     Go Back    
@@ -73,8 +73,8 @@ Quando o usuario executa a função de Restaurar Entradas
 
 Dado que possui arquivos de exportação de saídas na pasta Estoque
     Produto ja cadastrado    Produto 001    100    20
-    E acessa funcionalidade de saida de produtos
-    Quando diminui quantidade de produto no estoque
+    E o usuário acessa funcionalidade de saida de produtos
+    Quando o usuário diminui quantidade de produto no estoque
     Click Element    ${QUANTIDADE_SALVAR}
     E o usuário acessa a funcionalidade de Exportar Dados
     Go Back
