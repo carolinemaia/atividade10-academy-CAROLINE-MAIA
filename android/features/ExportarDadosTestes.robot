@@ -7,6 +7,8 @@ Test Teardown     Teardown
 
 
 *** Test Cases ***
+
+##Cenarios de testes abaixo é necessário movimentação de produtos: cadastro, entradas e saídas. 
 CT001 - Deve ser possivel acessar a funcionalidade de Exportar Dados
     Dado que usuário acessa o MENU na tela inicial
     Quando usuario acessa a funcionalidade de Exportar Dados
