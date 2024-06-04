@@ -180,11 +180,9 @@ E ao confirmar o produto não deverá constar na pagina inicial
 
 Dado que possui vários produtos cadastrados
     Produto ja cadastrado    Produto 001    10    5
-    Click Element    ${PRODUTO_SALVAR}
     Produto ja cadastrado    Produto 002    58    2
-    Click Element    ${PRODUTO_SALVAR}
-
-Quando acessa funcionalidade de pesquisa de produto
+  
+Quando o usuário acessa funcionalidade de pesquisa de produto
     Espera elemento e clica    ${PRODUTO_PESQUISA}
     Input Text    ${CAMPO_PESQUISA}    Produto 001
     Press Keycode    66
@@ -201,8 +199,8 @@ Dado que o usuário está na tela inicial
     Element Should Be Visible    ${MENU}
     Element Should Be Visible    ${PRODUTO_NOVO}
 
-E acessa funcionalidade de pesquisa de produto inserindo nome
-    Quando acessa funcionalidade de pesquisa de produto
+E o usuário acessa funcionalidade de pesquisa de produto inserindo nome
+   Quando o usuário acessa funcionalidade de pesquisa de produto
 
 E acessa funcionalidade de limpar pesquisa
     Click Element    ${CONSULTA_FECHAR}
@@ -212,10 +210,10 @@ Então o campo de busca deve está limpo
     ${busca}=  Get Text  ${CAMPO_PESQUISA}
     Should Not Contain    ${busca}    Produto 001
 
-E acessa funcionalidade de pesquisa de produto
+E o usuário acessa funcionalidade de pesquisa de produto
     Click Element    ${PRODUTO_PESQUISA}
 
-Quando acessa funcionalidade de limpar pesquisa
+Quando o usuário acessa funcionalidade de limpar pesquisa
     E acessa funcionalidade de limpar pesquisa
 
 Então a opção de digitar o produto deve ser finalizado
