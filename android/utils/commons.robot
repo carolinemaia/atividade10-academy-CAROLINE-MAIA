@@ -83,6 +83,15 @@ Acessar pasta Estoque
     Swipe By Percent    40    80    40    20
     Espera elemento e clica    ${PASTA_ESTOQUE}
 
+Selecionar Datas
+    [Arguments]    ${data1}    ${data2}
+    Espera elemento e clica    ${DATA_INICIAL}
+    Click Element    ${data1}
+    Click Element    ${BUTTON_OK}
+    Espera elemento e clica    ${DATA_FINAL}
+    Click Element    ${data2}
+    Click Element    ${BUTTON_OK}
+
 
 
     

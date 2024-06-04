@@ -14,3 +14,4 @@ Resource    android/pages/Backup_Page.robot
 Resource    android/pages/Restore_Page.robot
 Resource    android/pages/ExportarDados_Page.robot
 Resource    android/pages/ImportarDados_Page.robot
+Resource    android/pages/Relatorio_Page.robot
