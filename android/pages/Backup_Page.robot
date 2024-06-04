@@ -6,14 +6,14 @@ Resource    ../utils/commons.robot
 
 
 *** Variables ***
-${BACKUP}                xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_backup"]
-${GERAR_BACKUP}          xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_gerar"]
-${ENVIAR_BACKUP}         xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_send"]
-${DADOS_BACKUP}          xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/datafile"]
-${TEXT_BACKUP}           xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/textView4"]
-${OPERACAO_CONCLUIDA}    xpath=//android.widget.TextView[@resource-id="android:id/alertTitle"]
-${COMPARTILHAR}          xpath=//android.widget.TextView[@resource-id="android:id/title"]
-${ARQUIVO_BACKUP}        xpath=//android.widget.LinearLayout[@resource-id="android:id/content_preview_file_layout"]
+${BACKUP}                id=br.com.pztec.estoque:id/btn_backup
+${GERAR_BACKUP}          id=br.com.pztec.estoque:id/btn_gerar
+${ENVIAR_BACKUP}         id=br.com.pztec.estoque:id/btn_send
+${DADOS_BACKUP}          id=br.com.pztec.estoque:id/datafile
+${TEXT_BACKUP}           id=br.com.pztec.estoque:id/textView4
+${OPERACAO_CONCLUIDA}    id=android:id/alertTitle
+${COMPARTILHAR}          id=android:id/title
+${ARQUIVO_BACKUP}        id=android:id/content_preview_file_layout
 
 
 *** Keywords ***

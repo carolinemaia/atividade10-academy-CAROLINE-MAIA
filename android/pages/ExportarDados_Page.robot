@@ -7,7 +7,6 @@ Resource    ../utils/commons.robot
 
 *** Variables ***
 ${EXPORTAR}             xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_exportar"]
-${EXPORTAR_CSV}         xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/textView4"]
 ${GERAR_EXPORTACAO}     xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_gerar"]
 ${ENVIAR_PROD}          xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_prod"]
 ${produto_csv}          xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/datafileprod"]
@@ -24,7 +23,7 @@ Quando usuario acessa a funcionalidade de Exportar Dados
     Espera elemento e clica    ${EXPORTAR}
 
 Então deve ser possível visualizar todas as informações sobre exportar Dados
-    Espera elemento está visivel    ${EXPORTAR_CSV}
+    Espera elemento está visivel    ${TEXT_BACKUP}
     Espera elemento está visivel    ${GERAR_EXPORTACAO}
     Espera elemento está visivel    ${ENVIAR_PROD}
 

@@ -24,5 +24,3 @@ CT003 - Deve ser possível enviar o backup
     Quando o usuário acessa a funcionalidade de enviar backup
     Então o aplicativo deverá informar as opções para envio do backup
 
-
-    
