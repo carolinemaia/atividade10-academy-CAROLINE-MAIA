@@ -7,6 +7,7 @@ Resource    ../utils/commons.robot
 
 *** Variables ***
 ${CODIGO_CAMPO}         xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_codigo"]
+${PRODUTO_COD}          xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_codigo"]
 ${DESCRICAO}            xpath=//android.widget.TextView[@text="Descrição"]
 ${DESCRICAO_CAMPO}      xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
 ${UNIDADE_CAMPO}        xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_unidade"]
@@ -54,8 +55,8 @@ Então o produto será cadastrado com sucesso
     Espera elemento e clica    ${PRODUTO_SALVAR}
 E o produto pode ser consultado na listagem de produtos na tela inicial
     Espera elemento está visivel    ${PRODUTO_NOME}
-    Element Should Contain Text    ${CODIGO_CAMPO}    01
-    Element Should Contain Text    ${DESCRICAO_CAMPO}    Pasta de Amendoin
+    Element Should Contain Text    ${PRODUTO_COD}    01
+    Element Should Contain Text    ${PRODUTO_NOME}    Pasta de Amendoin
 
 E alterar a validade do produto
     Altera a validade
@@ -83,7 +84,6 @@ Dado que possui produto cadastrado
     Produto ja cadastrado    Produto AA1    100    5
 
 E acessa funcionalidade de entrada de produtos
-  
     Espera elemento e clica    ${ESTOQUE_ENTRADA}
 
 Quando adiciona quantidade de produto no estoque  

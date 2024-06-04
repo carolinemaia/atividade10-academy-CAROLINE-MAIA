@@ -79,6 +79,10 @@ Produto ja cadastrado
     Produto somente com campos obrigatorios    ${des}    ${qtd}    ${val}
     Click Element    ${PRODUTO_SALVAR}
 
+Acessar pasta Estoque
+    Swipe By Percent    40    80    40    20
+    Espera elemento e clica    ${PASTA_ESTOQUE}
+
 
 
     
