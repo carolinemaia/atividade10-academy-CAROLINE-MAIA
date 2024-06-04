@@ -16,6 +16,8 @@ ${entrada_csv}          xpath=//android.widget.TextView[@resource-id="br.com.pzt
 ${ENVIAR_ENTRADA}       xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_ent"]
 ${saida_csv}            xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/datafilesai"]
 ${ENVIAR_SAIDA}         xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_sai"]
+${grupo_csv}            id=br.com.pztec.estoque:id/datafilegrupo
+${ENVIAR_GRUPO}         id=br.com.pztec.estoque:id/btn_grupo
 
 *** Keywords ***
 Quando usuario acessa a funcionalidade de Exportar Dados
@@ -38,7 +40,7 @@ Quando clica na função Exportar Dados
 E o arquivo exportado deve ficar visivel 
     Espera elemento está visivel    ${produto_csv}
 
-Dado que o usuario acessa a funcionade de Exportar Dados
+Dado que o usuario acessa a funcionalidade de Exportar Dados
     E o usuário acessa a funcionalidade de Exportar Dados
 
 E possui arquivos de produto para serem exportados
@@ -75,6 +77,13 @@ E possui arquivos de saída para serem exportados
 
 Quando clica em enviar arquivo de saída
     Click Element    ${ENVIAR_SAIDA}
+
+E possui arquivos de grupos para serem exportados
+    Espera elemento está visivel    ${grupo_csv}
+
+Quando clica em enviar arquivo de grupos
+    Click Element    ${ENVIAR_GRUPO}
+    
 
 
     

@@ -42,6 +42,13 @@ CT005 - Deve ser possivel exportar arquivo de saídas
     Quando clica em enviar arquivo de saída
     Então o aplicativo deverá informar as opções para envio do arquivo exportado
 
+CT006 - Deve ser possível exportar arquivos de grupos
+    Dado que o usuario acessa a funcionalidade de Exportar Dados
+    E possui arquivos de grupos para serem exportados
+    Quando clica em enviar arquivo de grupos
+    Então o aplicativo deverá informar as opções para envio do arquivo exportado
+
+
 
 
     
