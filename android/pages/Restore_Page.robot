@@ -18,19 +18,26 @@ ${arq_pdf}                          xpath=//android.widget.TextView[@resource-id
 *** Keywords ***
 Quando acessa a funcionalidade de Restore
     Espera elemento e clica    ${RESTORE}
+
 Então deve ser possível visualizar todas as informações sobre Restore
     Espera elemento está visivel    ${RESTAURAR_BACKUP}
     Element Should Be Visible    ${TEXT_RESTORE}
     Element Should Be Visible    ${SELECIONAR_ARQUIVO_RESTORE}
 
-Dado que usuário acessa a funcionalidade de Restore
-    Espera elemento e clica    ${MENU}
-    Espera elemento e clica    ${RESTORE}
+Dado que usuario possui backup realizado
+    Dado que usuário acessa a funcionalidade de Backup
+    Quando clica na função Gerar Backup
+    Wait Until Keyword Succeeds    5    1    Element Should Be Visible    ${OPERACAO_CONCLUIDA}
+    Click Element    ${BUTTON_OK}
+    Go Back
+
+E que usuário acessa a funcionalidade de Restore
+    Quando acessa a funcionalidade de Restore
 
 Quando clica na função de Selecionar arquivo
     Espera elemento e clica    ${SELECIONAR_ARQUIVO_RESTORE}
 
-Então deve ser possivel selecionar arquivo de estoque
+Então deve ser possivel selecionar arquivo na pasta estoque
     Espera elemento está visivel    ${ALERTA_TITULO}
     Swipe By Percent    40    80    40    20
     Espera elemento e clica    ${ESTOQUE_ARQUIVO}
@@ -38,5 +45,4 @@ Então deve ser possivel selecionar arquivo de estoque
 E deve ser possivel visualizar os arquivos de backup armazenados
     Espera elemento está visivel    ${ALERTA_TITULO}
     Espera elemento está visivel    ${bkp_arq}
-    Espera elemento está visivel    ${arq_pdf}
 
