@@ -46,9 +46,9 @@ Quando o usuario executa a função de Restaurar Produtos
     Espera elemento e clica    ${import_prod}
 
 Então o usuário deve visualizar mensagem de confirmação de exportação
-    Espera elemento está visivel    ${MENSAGEM}
+    Wait Until Keyword Succeeds    8    1    Element Should Be Visible    ${MENSAGEM}
     Click Element    ${BUTTON_OK}
-    Espera elemento está visivel    ${MENSAGEM}
+    Wait Until Keyword Succeeds    8    1    Element Should Be Visible    ${MENSAGEM}
     Click Element    ${BUTTON_OK}
 
 E ao acessar a pagina inicial poderá visualizar o produto restaurado através da importação
