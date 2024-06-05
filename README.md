@@ -28,5 +28,5 @@ Essas melhorias incluem:
   
 * Usabilidade;
 * Adição de validações nas movimentações de estoque;
-* Melhoria na exibição de mensagens de erro para o usuário.
+* Sugestões de novas implementações.
   
