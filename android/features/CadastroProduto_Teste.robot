@@ -33,6 +33,13 @@ CT004 - Cadastrar mais de um produto
         002    Whey        g    8    220    001B
         003    Colageno    g    10    35    001C
 
+#débito técnico registrado no quadro do trello
+CT005 - Não deve ser possível cadastrar produto com valores negativos
+    Dado que o usuário acessa tela de cadastro de produto
+    Quando preencher os campos obrigatórios do novo produto com valores negativos
+    Então o produto será cadastrado com sucesso
+    E o produto com quantidade negativa pode ser consultado na listagem de produtos na tela inicial
+
     
     
 

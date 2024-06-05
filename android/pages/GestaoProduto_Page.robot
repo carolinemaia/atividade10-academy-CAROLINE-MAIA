@@ -220,7 +220,19 @@ Quando o usuário acessa funcionalidade de limpar pesquisa
     E acessa funcionalidade de limpar pesquisa
 
 Então a opção de digitar o produto deve ser finalizado
-    Page Should Not Contain Element    ${CAMPO_PESQUISA}   
+    Page Should Not Contain Element    ${CAMPO_PESQUISA}
+
+Quando preencher os campos obrigatórios do novo produto com valores negativos
+    Produto somente com campos obrigatorios    Produto Teste    -100    -50
+
+E o produto com quantidade negativa pode ser consultado na listagem de produtos na tela inicial
+    Espera elemento está visivel    ${PRODUTO_NOME}
+    Element Should Contain Text     ${PRODUTO_NOME}          Produto Teste
+    Element Should Contain Text     ${PRODUTO_QUANTIDADE}    -100
+    Element Should Contain Text     ${PRODUTO_VALOR}         -50,00
+    
+ 
+
     
 
 
