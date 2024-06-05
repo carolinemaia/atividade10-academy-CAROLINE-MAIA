@@ -64,7 +64,9 @@ Dado que possui arquivos de exportação de entradas na pasta Estoque
     Quando o usuário adiciona quantidade de produto no estoque
     Click Element    ${QUANTIDADE_SALVAR}
     E o usuário acessa a funcionalidade de Exportar Dados
-    Go Back    
+    Espera elemento está visivel    ${GERAR_EXPORTACAO}
+    Go Back   
+
 
 Quando o usuario executa a função de Restaurar Entradas
     Espera elemento e clica    ${RESTAURAR_ENTRADAS}

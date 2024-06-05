@@ -10,7 +10,7 @@ Espera elemento está visivel
 
 Espera elemento e clica
     [Arguments]    ${elemento}
-    Wait Until Element Is Visible    ${elemento}
+    Wait Until Element Is Visible    ${elemento}    10
     Click Element                    ${elemento}    
 
 Clica e Input Texto
@@ -86,10 +86,10 @@ Acessar pasta Estoque
 Selecionar Datas
     [Arguments]    ${data1}    ${data2}
     Espera elemento e clica    ${DATA_INICIAL}
-    Click Element    ${data1}
+    Espera elemento e clica    ${data1}
     Click Element    ${BUTTON_OK}
     Espera elemento e clica    ${DATA_FINAL}
-    Click Element    ${data2}
+    Espera elemento e clica    ${data2}
     Click Element    ${BUTTON_OK}
 
 Editar Produto
