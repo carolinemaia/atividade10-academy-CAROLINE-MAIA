@@ -6,9 +6,11 @@ Resource    ../utils/commons.robot
 
 
 *** Variables ***
+#apos alterar o elemento de xpath para id os testes onde necessitam acionar menu e prod_novo começaram a quebrar, em alguns (mesma step) passava e outras nao, e
+# entao retornei para xpath
 #atalhos 
-${PRODUTO_NOVO}              id=br.com.pztec.estoque:id/Button1
-${MENU}                      id=br.com.pztec.estoque:id/Button3
+${PRODUTO_NOVO}              xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/Button1"]
+${MENU}                      xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/Button3"]
 
 #pesquisaProduto
 ${PRODUTO_PESQUISA}          xpath=//android.widget.ImageView[@content-desc="Pesquisar"]

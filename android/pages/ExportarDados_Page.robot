@@ -7,7 +7,7 @@ Resource    ../utils/commons.robot
 
 *** Variables ***
 ${EXPORTAR}             id=br.com.pztec.estoque:id/btn_exportar
-${GERAR_EXPORTACAO}     id=br.com.pztec.estoque:id/btn_gerar
+${GERAR_EXPORTACAO}     xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_gerar"]
 ${ENVIAR_PROD}          id=br.com.pztec.estoque:id/btn_prod
 ${produto_csv}          id=br.com.pztec.estoque:id/datafileprod
 ${arquivo_compart}      id=android:id/content_preview_filename

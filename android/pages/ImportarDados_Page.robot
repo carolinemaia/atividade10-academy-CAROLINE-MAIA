@@ -13,14 +13,14 @@ ${RESTAURAR_SAIDAS}      id=br.com.pztec.estoque:id/btn_saidas
 ${RESTAURAR_GRUPOS}      id=br.com.pztec.estoque:id/btn_grupos
 ${PASTA_ESTOQUE}         xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="Estoque"]
 #arquivos
-${import_prod}           id="android:id/text1" and @text="produtos.csv"]
+${import_prod}           xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="produtos.csv"]
 ${import_entrad}         xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="entradas.csv"]
 ${import_saidas}         xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="saidas.csv"]
 ${import_grupos}         xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="grupos.csv"]
 
 *** Keywords ***
 Quando usuario acessa a funcionalidade de Importar Dados
-    Espera elemento está visivel    ${IMPORTAR}
+    Espera elemento e clica   ${IMPORTAR}
 
 Então deve ser possível visualizar todas as funcionalidade de Importar Dados
     Espera elemento está visivel    ${RESTAURAR_PRODUTOS}
